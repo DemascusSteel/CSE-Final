@@ -57,28 +57,28 @@ namespace Example.Breaker.Game
             }
         }
 
-        private void DoBallPaddleCollision(Scene scene)
-        {
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-            List<Ball> balls = scene.GetAllActors<Ball>("balls");
+        // private void DoBallPaddleCollision(Scene scene)
+        // {
+        //     Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
+        //     List<Ball> balls = scene.GetAllActors<Ball>("balls");
             
-            foreach(Ball ball in balls)
-            {
-                if (ball.Overlaps(Xpaddle))
-                {
-                    ball.BounceY();
-                    string sound = _settingsService.GetString("bounceSound");
-                    _audioService.PlaySound(sound);
-                }
-                if (ball.Overlaps(Ypaddle))
-                {
-                    ball.BounceX();
-                    string sound = _settingsService.GetString("bounceSound");
-                    _audioService.PlaySound(sound);
-                }
+        //     foreach(Ball ball in balls)
+        //     {
+        //         if (ball.Overlaps(Xpaddle))
+        //         {
+        //             ball.BounceY();
+        //             string sound = _settingsService.GetString("bounceSound");
+        //             _audioService.PlaySound(sound);
+        //         }
+        //         if (ball.Overlaps(Ypaddle))
+        //         {
+        //             ball.BounceX();
+        //             string sound = _settingsService.GetString("bounceSound");
+        //             _audioService.PlaySound(sound);
+        //         }
 
-            }
-        }
+        //     }
+        // }
 
         // private void DoSpecialPaddleCollision(Scene scene)
         // {
