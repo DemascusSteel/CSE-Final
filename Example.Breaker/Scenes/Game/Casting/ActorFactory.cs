@@ -78,12 +78,12 @@ namespace Example.Breaker.Game
             float x = _settingsService.GetFloat("paddleX");
             float y = _settingsService.GetFloat("paddleY");
             
-            Paddle paddle = new Paddle();
-            paddle.Animate(images, durationInSeconds, framesPerSecond);
-            paddle.SizeTo(width, height);
-            paddle.MoveTo(x, y);
+            Tank tank = new Tank();
+            tank.Animate(images, durationInSeconds, framesPerSecond);
+            tank.SizeTo(width, height);
+            tank.MoveTo(x, y);
 
-            return paddle;
+            return tank;
         }
 
         public Score CreateScore()

@@ -47,7 +47,7 @@ namespace Example.Breaker.Game
         private void LoadActors(Scene scene)
         {
             Ball ball = _actorFactory.CreateBall();
-            Paddle paddle = _actorFactory.CreatePaddle();
+            Tank tank = _actorFactory.CreatePaddle();
             Actor field = _actorFactory.CreateField();
             Level level = _actorFactory.CreateLevel();
             Score score = _actorFactory.CreateScore();
@@ -57,6 +57,7 @@ namespace Example.Breaker.Game
 
             scene.AddActor("balls", ball);
             scene.AddActor("paddle", paddle);
+            scene.AddActor("tank", tank);
             scene.AddActor("field", field);
             scene.AddActor("level", level);
             scene.AddActor("score", score);
