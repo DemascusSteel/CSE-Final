@@ -22,7 +22,7 @@ namespace Example.Breaker.Game
             try
             {
                 ReleaseBall(scene);
-                SteerPaddle(scene);
+                SteerTank(scene);
             }
             catch (Exception exception)
             {
@@ -32,29 +32,44 @@ namespace Example.Breaker.Game
 
         private void ReleaseBall(Scene scene)
         {
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-            if (paddle.HasBall() && _keyboardService.IsKeyDown(KeyboardKey.Space))
+            Tank tank = scene.GetFirstActor<Tank>("tank");
+            if (tank.HasBall() && _keyboardService.IsKeyDown(KeyboardKey.Space))
             {
-                paddle.ReleaseBall();
+                tank.ReleaseBall();
             }
         }
 
-        private void SteerPaddle(Scene scene)
+        private void SteerTank(Scene scene)
         {
             float directionX = 0;
             float directionY = 0;
-
-            if (_keyboardService.IsKeyDown(KeyboardKey.Left))
+            Tank tank = scene.GetFirstActor<Tank>("tank");
+            
+            if (_keyboardService.IsKeyDown(KeyboardKey.W))
             {
-                directionX = _settingsService.GetFloat("paddleVelocity") * -1;
+      //          directionY = _settingsService.GetFloat("paddleVelocity") * -1;
+                directionY = Math.Sin( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity") * -1;
+                directionX = Math.Cos( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity");
+                
             }
-            else if (_keyboardService.IsKeyDown(KeyboardKey.Right))
+            else if (_keyboardService.IsKeyDown(KeyboardKey.S))
             {
-                directionX = _settingsService.GetFloat("paddleVelocity");
+         //       directionY = _settingsService.GetFloat("paddleVelocity");
+                directionY = Math.Sin( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity");
+                directionX = Math.Cos( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity")* -1;
+         
+         
             }
-
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-            paddle.Steer(directionX, directionY);
+            tank.Steer(directionX, directionY);
+            
+             if (_keyboardService.IsKeyDown(KeyboardKey.A))
+                {
+                    tank.Rotate(-2);
+                }
+                else if (_keyboardService.IsKeyDown(KeyboardKey.D))
+                {
+                    tank.Rotate(2);
+                }
         }
     }
 }

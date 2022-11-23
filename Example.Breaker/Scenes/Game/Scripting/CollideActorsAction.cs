@@ -23,7 +23,7 @@ namespace Example.Breaker.Game
             try
             {
                 DoBallPaddleCollision(scene);
-                DoBallBottomCollision(scene);
+              //  DoBallBottomCollision(scene);
             }
             catch (Exception exception)
             {
@@ -33,7 +33,7 @@ namespace Example.Breaker.Game
 
         private void DoBallBottomCollision(Scene scene)
         {
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
+            Tank tank = scene.GetFirstActor<Tank>("tank");
             List<Ball> balls = scene.GetAllActors<Ball>("balls");
             Actor field = scene.GetFirstActor("field");
             Lives lives = scene.GetFirstActor<Lives>("lives");
@@ -44,7 +44,7 @@ namespace Example.Breaker.Game
                 {
                     if (balls.Count == 1)
                     {
-                        paddle.AttachBall(ball);
+                        tank.AttachBall(ball);
                         string sound = _settingsService.GetString("startSound");
                         _audioService.PlaySound(sound);
                         lives.RemoveLife();
@@ -64,12 +64,19 @@ namespace Example.Breaker.Game
             
             foreach(Ball ball in balls)
             {
-                if (ball.Overlaps(paddle))
+                if (ball.Overlaps(Xpaddle))
                 {
                     ball.BounceY();
                     string sound = _settingsService.GetString("bounceSound");
                     _audioService.PlaySound(sound);
                 }
+                if (ball.Overlaps(Ypaddle))
+                {
+                    ball.BounceX();
+                    string sound = _settingsService.GetString("bounceSound");
+                    _audioService.PlaySound(sound);
+                }
+
             }
         }
 
