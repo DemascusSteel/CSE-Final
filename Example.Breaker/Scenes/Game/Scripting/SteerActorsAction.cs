@@ -48,15 +48,15 @@ namespace Example.Breaker.Game
             if (_keyboardService.IsKeyDown(KeyboardKey.W))
             {
       //          directionY = _settingsService.GetFloat("paddleVelocity") * -1;
-                directionY = Math.Sin( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity") * -1;
-                directionX = Math.Cos( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity");
+                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity") * -1;
+                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity");
                 
             }
             else if (_keyboardService.IsKeyDown(KeyboardKey.S))
             {
          //       directionY = _settingsService.GetFloat("paddleVelocity");
-                directionY = Math.Sin( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity");
-                directionX = Math.Cos( (_tank.GetRotation() * Math.PI) / 180) * _settingsService.GetFloat("paddleVelocity")* -1;
+                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity");
+                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity")*-1;
          
          
             }
@@ -64,11 +64,11 @@ namespace Example.Breaker.Game
             
              if (_keyboardService.IsKeyDown(KeyboardKey.A))
                 {
-                    tank.Rotate(-2);
+                    tank.Rotate(-4);
                 }
                 else if (_keyboardService.IsKeyDown(KeyboardKey.D))
                 {
-                    tank.Rotate(2);
+                    tank.Rotate(4);
                 }
         }
     }

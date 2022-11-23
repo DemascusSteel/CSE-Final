@@ -68,7 +68,7 @@ namespace Example.Breaker.Game
             return lives;
         }
 
-        public Paddle CreatePaddle()
+        public Tank CreatePaddle()
         {
             string[] images = _settingsService.GetArray<string>("paddleImages");
             float durationInSeconds = _settingsService.GetFloat("paddleAnimationLength");

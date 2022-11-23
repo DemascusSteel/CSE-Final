@@ -35,7 +35,7 @@
   "paddleX": 459,
   "paddleY": 740,
   "paddleAnimationLength": 0.4,
-  "paddleVelocity": 9,
+  "paddleVelocity": 5,
   "fieldWidth": 1024,
   "fieldHeight": 708,
   "fieldX": 0,

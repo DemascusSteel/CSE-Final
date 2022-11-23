@@ -48,10 +48,10 @@ namespace Example.Breaker.Game
 
         private void MovePaddle(Scene scene)
         {
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
+            Tank tank = scene.GetFirstActor<Tank>("tank");
             Actor field = scene.GetFirstActor("field");
-            paddle.Move();
-            paddle.ClampTo(field);
+            tank.Move();
+            tank.ClampTo(field);
         }
     }
 }

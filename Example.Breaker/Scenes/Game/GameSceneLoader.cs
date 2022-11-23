@@ -53,10 +53,10 @@ namespace Example.Breaker.Game
             Score score = _actorFactory.CreateScore();
             Lives lives = _actorFactory.CreateLives();
 
-            paddle.AttachBall(ball);
+            tank.AttachBall(ball);
 
             scene.AddActor("balls", ball);
-            scene.AddActor("paddle", paddle);
+            // scene.AddActor("paddle", paddle);
             scene.AddActor("tank", tank);
             scene.AddActor("field", field);
             scene.AddActor("level", level);

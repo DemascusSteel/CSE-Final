@@ -22,7 +22,7 @@ namespace Example.Breaker.Game
         {
             try
             {
-                DoBallPaddleCollision(scene);
+         //       DoBallPaddleCollision(scene);
               //  DoBallBottomCollision(scene);
             }
             catch (Exception exception)

@@ -46,8 +46,8 @@ namespace Example.Breaker.Game
 
         private void DrawPaddles(Scene scene)
         {
-            Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-            _videoService.Draw(paddle);
+            Tank tank = scene.GetFirstActor<Tank>("tank");
+            _videoService.Draw(tank);
         }
 
         private void DrawLevel(Scene scene)
