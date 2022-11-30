@@ -20,8 +20,8 @@ namespace Example.Breaker.Game
             string image = _settingsService.GetString("ballImage");
             float width = _settingsService.GetFloat("ballWidth");
             float height = _settingsService.GetFloat("ballHeight");
-            float x = _settingsService.GetFloat("ballX");
-            float y = _settingsService.GetFloat("ballY");
+            float x = _settingsService.GetFloat(-10);
+            float y = _settingsService.GetFloat(-10);
             float directionX = _settingsService.GetFloat("ballVelocity");
             float directionY = directionX *= -1;
 
