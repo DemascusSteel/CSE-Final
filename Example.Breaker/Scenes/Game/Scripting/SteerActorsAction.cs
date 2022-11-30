@@ -10,6 +10,7 @@ namespace Example.Breaker.Game
     {
         private IKeyboardService _keyboardService;
         private ISettingsService _settingsService;
+        private bool releasedSpacebar = false;
 
         public SteerActorsAction(IServiceFactory serviceFactory)
         {
@@ -32,12 +33,19 @@ namespace Example.Breaker.Game
 
         private void ReleaseBall(Scene scene)
         {
+           
+        if (!_keyboardService.IsKeyDown(KeyboardKey.Space)){
+        releasedSpacebar = true;
+        }
             Tank tank = scene.GetFirstActor<Tank>("tank");
-            if (tank.HasBall() && _keyboardService.IsKeyDown(KeyboardKey.Space))
+            if (tank.HasBall() && _keyboardService.IsKeyDown(KeyboardKey.Space) && releasedSpacebar)
             {
                 tank.ReleaseBall();
+                releasedSpacebar = false;
             }
         }
+
+
 
         private void SteerTank(Scene scene)
         {
@@ -60,8 +68,14 @@ namespace Example.Breaker.Game
          
          
             }
-            tank.Steer(directionX, directionY);
             
+            tank.Steer(directionX, directionY);
+
+            directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("ballVelocity") * -1;
+            directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("ballVelocity");
+
+            tank.SteerBall(directionX, directionY);
+
              if (_keyboardService.IsKeyDown(KeyboardKey.A))
                 {
                     tank.Rotate(-4);

@@ -9,8 +9,8 @@ namespace Example.Breaker.Game
 {
     public class ApplyMultiballAction : Byui.Games.Scripting.Action
     {
-        private int DEFAULT_EXTRA_BALLS = 3;
-
+        // private int DEFAULT_EXTRA_BALLS = 1;
+        private int counter = 0;
         private ISettingsService _settingsService;
 
         public ApplyMultiballAction(IServiceFactory serviceFactory) 
@@ -22,14 +22,25 @@ namespace Example.Breaker.Game
         {
             try
             {
-                ActorFactory actorFactory = new ActorFactory(_settingsService);
-                Ball first = scene.GetFirstActor<Ball>("balls");
-                for (int i = 0; i < DEFAULT_EXTRA_BALLS; i++)
-                {
-                    Ball ball = actorFactory.CreateBall();
-                    ball.MoveTo(first.GetPosition());
-                    scene.AddActor("balls", ball);
-                }
+                    counter ++;
+                    {
+                    Tank tank = (Tank)scene.GetFirstActor("tank");
+                    bool isShot = tank.HasBall();
+               //     Time = timeService.getCurrentTime();
+                    if (!isShot && counter >= 5)
+                    {
+                            ActorFactory actorFactory = new ActorFactory(_settingsService);
+                    //    Ball first = scene.GetFirstActor<Ball>("balls");
+                    //    for (int i = 0; i < DEFAULT_EXTRA_BALLS; i++)
+                     //   {
+                            Ball ball = actorFactory.CreateBall();
+                            // ball.MoveTo(first.GetPosition());
+                            scene.AddActor("balls", ball);
+                            tank.AttachBall(ball);
+                            counter = 0;
+                      //  }
+                    }
+                    };
             }
             catch (Exception exception)
             {

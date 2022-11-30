@@ -15,6 +15,10 @@ namespace Example.Breaker.Game
         {
             return _ball != null;
         }
+        public Ball GetBall()
+        {
+            return _ball;
+        }
 
         public override void Move()
         {
@@ -26,6 +30,13 @@ namespace Example.Breaker.Game
                 _ball.MoveTo(x, y);
             }
         }
+        public void SteerBall(float directionX, float directionY){
+             if (_ball != null)
+            {
+            _ball.Steer(directionX, directionY);
+            }
+            
+        }
 
         public void AttachBall(Ball ball)
         {
@@ -33,7 +44,7 @@ namespace Example.Breaker.Game
         }
 
         public void ReleaseBall()
-        {
+        {            
             _ball = null;
         }
     }

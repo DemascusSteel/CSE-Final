@@ -1,5 +1,71 @@
-THIS EXAMPLE IS NOT COMPLETE! 
+# Not Wii Tanks or Atari Combat
+Update this! 
+Tanks is played according to the following rules:
+- Players can move up, down, left, and right using A and D
+- Players can aim shots using W and S
+- Two players will have to navigate the screen and try to destroy the other tank while avoiding the flying bullets
+- If a player gets hit by a bullet(including their own!):
+    - they lose the level and you can choose to move on
 
-You can run it, press return to start the game, press space to launch the ball,
-and finally, move the paddle with the left and right arrows. However, the bricks
-haven't been built, etc.
+# Project Structure
+Also this is incomplete, I don't know what we're using yet, so I put everything on there
+* Casting
+    * ActorFactory
+    * Ball
+    * Level
+    * Lives
+    * Paddle
+    * Score
+    * Tank
+    * Color
+    * Image
+    * Label
+    * Validator
+* Scripting
+    * Action
+    * IActionCallback
+    * Phase
+    * Scene
+    * Script
+    * ApplyExtraLife
+    * ApplyMultiball
+    * CollideActorsActions
+    * DrawActorsActions
+    * LoadSceneActions
+    * MoveActorsActions
+    * SteerActorsActions
+* Directing
+    * Director
+* Services
+    * IAudioService
+    * IKeyboardService
+    * IServiceFactory
+    * ISettingsService
+    * IVideoService
+    * JsonSettingsService
+    * KeyboardKey
+    * MouseButton
+    * RaylibAudioService
+    * RaylibKeyboardService
+    * RaylibMouseService
+    * RaylibServiceFactory
+    * RaylibVideoService
+
+# Getting Started
+Make sure you have dotnet 6.0 or newer installed on your machine. Open a terminal and browse to the project's root folder. Start the program by running the following commands:
+- dotnet add package raylib-cs 
+- dotnet build 
+- dotnet run
+
+# Authors
+- Nathan Marble
+- Madison Brown
+- Justin Paystrup
+- Dillon Leone
+- Andre Regino
+- Emma Quackenbush
+
+
+Bugs that could be a feature:
+hold down spacebar to keep firing?
+landmines? let bullet velocity = tank velocity

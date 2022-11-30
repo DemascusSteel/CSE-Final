@@ -31,31 +31,31 @@ namespace Example.Breaker.Game
             }
         }
 
-        private void DoBallBottomCollision(Scene scene)
-        {
-            Tank tank = scene.GetFirstActor<Tank>("tank");
-            List<Ball> balls = scene.GetAllActors<Ball>("balls");
-            Actor field = scene.GetFirstActor("field");
-            Lives lives = scene.GetFirstActor<Lives>("lives");
+        // private void DoBallBottomCollision(Scene scene)
+        // {
+        //     Tank tank = scene.GetFirstActor<Tank>("tank");
+        //     List<Ball> balls = scene.GetAllActors<Ball>("balls");
+        //     Actor field = scene.GetFirstActor("field");
+        //     Lives lives = scene.GetFirstActor<Lives>("lives");
 
-            foreach (Ball ball in balls)
-            {
-                if (ball.GetBottom() >= field.GetBottom())
-                {
-                    if (balls.Count == 1)
-                    {
-                        tank.AttachBall(ball);
-                        string sound = _settingsService.GetString("startSound");
-                        _audioService.PlaySound(sound);
-                        lives.RemoveLife();
-                    }
-                    else
-                    {
-                        scene.RemoveActor("balls", ball);
-                    }
-                }
-            }
-        }
+        //     foreach (Ball ball in balls)
+        //     {
+        //         if (ball.GetBottom() >= field.GetBottom())
+        //         {
+        //             if (balls.Count == 1)
+        //             {
+        //                 tank.AttachBall(ball);
+        //                 string sound = _settingsService.GetString("startSound");
+        //                 _audioService.PlaySound(sound);
+        //                 lives.RemoveLife();
+        //             }
+        //             else
+        //             {
+        //                 scene.RemoveActor("balls", ball);
+        //             }
+        //         }
+        //     }
+        // }
 
         // private void DoBallPaddleCollision(Scene scene)
         // {
