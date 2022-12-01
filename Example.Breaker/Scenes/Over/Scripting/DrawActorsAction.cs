@@ -19,8 +19,8 @@ namespace Example.Breaker.Over
         {
             try
             {
-                Label title = scene.GetFirstActor<Label>("title");
-                Label instructions = scene.GetFirstActor<Label>("instructions");
+               Label title = scene.GetFirstActor<Label>("title");
+               Label instructions = scene.GetFirstActor<Label>("instructions");
 
                 _videoService.ClearBuffer();
                 _videoService.Draw(title);

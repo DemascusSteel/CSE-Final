@@ -26,6 +26,8 @@ namespace Example.Breaker.Game
                     {
                     Tank tank = (Tank)scene.GetFirstActor("tank");
                     bool isShot = tank.HasBall();
+                    float x = tank.GetCenterX();
+                    float y = tank.GetTop();
                //     Time = timeService.getCurrentTime();
                     if (!isShot && counter >= 5)
                     {
@@ -33,7 +35,7 @@ namespace Example.Breaker.Game
                     //    Ball first = scene.GetFirstActor<Ball>("balls");
                     //    for (int i = 0; i < DEFAULT_EXTRA_BALLS; i++)
                      //   {
-                            Ball ball = actorFactory.CreateBall();
+                            Ball ball = actorFactory.CreateBall(x, y);
                             // ball.MoveTo(first.GetPosition());
                             scene.AddActor("balls", ball);
                             tank.AttachBall(ball);

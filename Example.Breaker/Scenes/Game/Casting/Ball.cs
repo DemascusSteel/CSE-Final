@@ -3,12 +3,24 @@ using System.Numerics;
 using Byui.Games.Casting;
 
 
+
 namespace Example.Breaker.Game
 {
     public class Ball : Byui.Games.Casting.Image
     {
         public Ball() { }
 
+        public int _lives = 2;
+
+        public bool IsDead()
+        {
+            return _lives <= 0;
+        }
+
+        public void RemoveLife()
+        {
+            _lives -= 1;
+        }
         public void BounceX()
         {
             Vector2 velocity = GetVelocity();

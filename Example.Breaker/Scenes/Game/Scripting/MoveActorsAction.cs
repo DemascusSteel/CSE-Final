@@ -42,7 +42,12 @@ namespace Example.Breaker.Game
                 {
                     string sound = _settingsService.GetString("bounceSound");
                     _audioService.PlaySound(sound);
+                    ball.RemoveLife();
                 }
+                else if (ball.IsDead())
+                    {
+                        scene.RemoveActor("balls", ball);
+                    }
             }
         }
 

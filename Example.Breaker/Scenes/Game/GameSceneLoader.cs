@@ -49,22 +49,22 @@ namespace Example.Breaker.Game
 
         private void LoadActors(Scene scene)
         {
-            Ball ball = _actorFactory.CreateBall();
             Tank tank = _actorFactory.CreatePaddle();
+            Ball ball = _actorFactory.CreateBall(200,200);
             Actor field = _actorFactory.CreateField();
             Level level = _actorFactory.CreateLevel();
             Score score = _actorFactory.CreateScore();
-            Lives lives = _actorFactory.CreateLives();
+     //       Lives lives = _actorFactory.CreateLives();
 
             tank.AttachBall(ball);
 
+            scene.AddActor("tank", tank);
             scene.AddActor("balls", ball);
             // scene.AddActor("paddle", paddle);
-            scene.AddActor("tank", tank);
             scene.AddActor("field", field);
             scene.AddActor("level", level);
             scene.AddActor("score", score);
-            scene.AddActor("lives", lives);
+    //        scene.AddActor("lives", lives);
         }
 
         private void LoadBackground(Scene scene)

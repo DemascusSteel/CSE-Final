@@ -23,7 +23,7 @@
   "ballWidth": 28,
   "ballHeight": 28,
   "ballX": 484,
-  "ballY": 712,
+  "ballY": 672,
   "ballVelocity": 10,
   "paddleImages": [
     "Assets/Images/100.png",
@@ -33,7 +33,7 @@
   "paddleWidth": 106,
   "paddleHeight": 28,
   "paddleX": 459,
-  "paddleY": 740,
+  "paddleY": 700,
   "paddleAnimationLength": 0.4,
   "paddleVelocity": 5,
   "fieldWidth": 1024,

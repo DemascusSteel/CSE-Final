@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using Byui.Games.Casting;
 using Byui.Games.Services;
+using Byui.Games.Scripting;
 
 
 namespace Example.Breaker.Game
@@ -15,20 +16,21 @@ namespace Example.Breaker.Game
             _settingsService = settingsService;
         }
 
-        public Ball CreateBall()
+        public Ball CreateBall(float x, float y)
         {
+            
             string image = _settingsService.GetString("ballImage");
             float width = _settingsService.GetFloat("ballWidth");
             float height = _settingsService.GetFloat("ballHeight");
-            float x = _settingsService.GetFloat("ballX");
-            float y = _settingsService.GetFloat("ballY") +100;
+            // float x = _settingsService.GetFloat("ballX");
+            // float y = _settingsService.GetFloat("ballY") "ballY";
             float directionX = _settingsService.GetFloat("ballVelocity");
             float directionY = directionX *= -1;
 
             Ball ball = new Ball();
             ball.Display(image);
             ball.SizeTo(width, height);
-            ball.MoveTo(x, y);
+            ball.MoveTo(x,y);
             ball.Steer(directionX, directionY);
 
             return ball;
@@ -56,17 +58,17 @@ namespace Example.Breaker.Game
             return level;
         }
 
-        public Lives CreateLives()
-        {
-            int x = _settingsService.GetInt("screenWidth");
-            int startingLives = _settingsService.GetInt("startingLives");
+        // public Lives CreateLives()
+        // {
+        //     int x = _settingsService.GetInt("screenWidth");
+        //     int startingLives = _settingsService.GetInt("startingLives");
             
-            Lives lives = new Lives(startingLives);
-            lives.MoveTo(x, 0);
-            lives.Align(Label.Right);
+        //     Lives lives = new Lives(startingLives);
+        //     lives.MoveTo(x, 0);
+        //     lives.Align(Label.Right);
 
-            return lives;
-        }
+        //     return lives;
+        // }
 
         public Tank CreatePaddle()
         {

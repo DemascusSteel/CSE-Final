@@ -26,7 +26,7 @@ namespace Example.Breaker.Game
                 DrawPaddles(scene);
                 DrawLevel(scene);
                 DrawScore(scene);
-                DrawLives(scene);
+    //            DrawLives(scene);
                 _videoService.FlushBuffer();
             }
             catch (Exception exception)
@@ -56,11 +56,11 @@ namespace Example.Breaker.Game
             _videoService.Draw(level);
         }
 
-        private void DrawLives(Scene scene)
-        {
-            Lives lives = scene.GetFirstActor<Lives>("lives");
-            _videoService.Draw(lives);
-        }
+        // private void DrawLives(Scene scene)
+        // {
+        //     Lives lives = scene.GetFirstActor<Lives>("lives");
+        //     _videoService.Draw(lives);
+        // }
 
         private void DrawScore(Scene scene)
         {

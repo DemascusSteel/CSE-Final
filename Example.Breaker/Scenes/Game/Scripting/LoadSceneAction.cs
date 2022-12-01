@@ -21,9 +21,14 @@ namespace Example.Breaker.Game
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
         {
             try
-            {
-                Lives status = scene.GetFirstActor<Lives>("lives");
-                if (status.IsDead())
+             {
+            //    Lives status = scene.GetFirstActor<Lives>("lives");
+            //     if (status.IsDead())
+            //     {
+            //         _overSceneLoader.Load(scene);
+            //     }
+            int tank = 2;
+            if (tank <2)
                 {
                     _overSceneLoader.Load(scene);
                 }
