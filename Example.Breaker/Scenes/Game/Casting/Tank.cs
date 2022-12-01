@@ -25,8 +25,8 @@ namespace Example.Breaker.Game
             base.Move();
             if (_ball != null)
             {
-                float x = this.GetCenterX() - _ball.GetWidth() / 2;
-                float y = this.GetTop() - _ball.GetHeight();
+                float x = this.GetCenterX() - _ball.GetHeight()/2;
+                float y = this.GetTop() + _ball.GetHeight()/2;
                 _ball.MoveTo(x, y);
             }
         }
