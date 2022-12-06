@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-
+using System;
 namespace Byui.Games.Casting
 {
     /// <summary>
@@ -30,6 +30,7 @@ namespace Byui.Games.Casting
             {
                 _current[group].Add(actor);
             }
+
         }
 
         public void ApplyChanges()
@@ -116,6 +117,14 @@ namespace Byui.Games.Casting
         {
             Validator.CheckNotBlank(group);
             Validator.CheckNotNull(actor);
+            
+            foreach(string key in _removed.Keys){
+                Console.WriteLine(key);
+            }
+                  if (!_removed.ContainsKey(group))
+            {
+                _removed[group] = new List<Actor>();
+            }
             
             if (!_removed[group].Contains(actor))
             {
