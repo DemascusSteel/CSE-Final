@@ -20,11 +20,18 @@ namespace Example.Breaker.Game
 
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
         {
+            Tank tank1 = scene.GetFirstActor("tank1");
+            Tank tank2 = scene.GetFirstActor("tank2");
+            TankExecute(scene, deltaTime, callback, tank1);
+            TankExecute(scene, deltaTime, callback, tank2);
+
+        }
+        private void TankExecute(Scene scene, float deltaTime, IActionCallback callback, Tank tank)
+        {
             try
-            {
+                {
                     counter ++;
                     {
-                    Tank tank = (Tank)scene.GetFirstActor("tank");
                     bool isShot = tank.HasBall();
                     float x = tank.GetCenterX();
                     float y = tank.GetTop();
@@ -48,6 +55,7 @@ namespace Example.Breaker.Game
             {
                 callback.OnError("Couldn't apply multiball.", exception);
             }
+
         }
     }
 }

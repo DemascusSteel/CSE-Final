@@ -46,17 +46,25 @@ namespace Example.Breaker.Game
                 }
                 else if (ball.IsDead())
                     {
-                        scene.RemoveActor("balls", ball);
+                        RemoveBall(scene,ball);
                     }
             }
         }
 
+        private void RemoveBall(Scene scene ,Ball ball)
+        {
+            scene.RemoveActor("balls", ball);
+        }
+
         private void MovePaddle(Scene scene)
         {
-            Tank tank = scene.GetFirstActor<Tank>("tank");
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
             Actor field = scene.GetFirstActor("field");
-            tank.Move();
-            tank.ClampTo(field);
+            tank1.Move();
+            tank1.ClampTo(field);
+            tank2.Move();
+            tank2.ClampTo(field);
         }
     }
 }
