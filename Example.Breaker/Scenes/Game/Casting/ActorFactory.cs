@@ -72,7 +72,7 @@ namespace Example.Breaker.Game
 
         public Tank CreateTank(string xPos, string yPos, string tankImage)
         {
-            string images = _settingsService.GetString(tankImage);
+            string image = _settingsService.GetString(tankImage);
             float durationInSeconds = _settingsService.GetFloat("tankAnimationLength");
             int framesPerSecond = _settingsService.GetInt("frameRate");
             float width = _settingsService.GetFloat("tankWidth");
@@ -81,7 +81,7 @@ namespace Example.Breaker.Game
             float y = _settingsService.GetFloat(yPos);
             
             Tank tank = new Tank();
-     //       tank.Animate(images, durationInSeconds, framesPerSecond);
+           tank.Display(image);
             tank.SizeTo(width, height);
             tank.MoveTo(x, y);
 
