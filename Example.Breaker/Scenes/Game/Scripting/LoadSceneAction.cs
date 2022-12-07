@@ -28,6 +28,8 @@ namespace Example.Breaker.Game
             //         _overSceneLoader.Load(scene);
             //     }
             int tank = 2;
+            // code to turn "tank" into 1 if either tank died on the game
+
             if (tank <2)
                 {
                     _overSceneLoader.Load(scene);

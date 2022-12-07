@@ -20,8 +20,8 @@ namespace Example.Breaker.Game
 
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
         {
-            Tank tank1 = scene.GetFirstActor("tank1");
-            Tank tank2 = scene.GetFirstActor("tank2");
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
             TankExecute(scene, deltaTime, callback, tank1);
             TankExecute(scene, deltaTime, callback, tank2);
 
@@ -42,10 +42,9 @@ namespace Example.Breaker.Game
                     //    Ball first = scene.GetFirstActor<Ball>("balls");
                     //    for (int i = 0; i < DEFAULT_EXTRA_BALLS; i++)
                      //   {
-                            Ball ball = actorFactory.CreateBall(x, y);
+                            Ball ball = actorFactory.CreateBall(tank);
                             // ball.MoveTo(first.GetPosition());
                             scene.AddActor("balls", ball);
-                            tank.AttachBall(ball);
                             counter = 0;
                       //  }
                     }

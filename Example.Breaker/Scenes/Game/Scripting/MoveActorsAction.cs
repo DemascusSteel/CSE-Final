@@ -23,7 +23,7 @@ namespace Example.Breaker.Game
             try
             {
                 MoveBalls(scene);
-                MovePaddle(scene);
+                MoveTank(scene);
             }
             catch (Exception exception)
             {
@@ -56,7 +56,7 @@ namespace Example.Breaker.Game
             scene.RemoveActor("balls", ball);
         }
 
-        private void MovePaddle(Scene scene)
+        private void MoveTank(Scene scene)
         {
             Tank tank1 = scene.GetFirstActor<Tank>("tank1");
             Tank tank2 = scene.GetFirstActor<Tank>("tank2");

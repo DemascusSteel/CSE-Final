@@ -12,6 +12,10 @@ namespace Example.Breaker.Game
     {
 
         private ActorFactory _actorFactory;
+        private List<int> wallx = new List<int> {200,200,500,800,800};
+        private List<int> wally = new List<int> {250, 600, 800, 0, 400};
+
+       
 
         public GameSceneLoader(IServiceFactory serviceFactory) : base(serviceFactory) 
         {
@@ -49,19 +53,29 @@ namespace Example.Breaker.Game
 
         private void LoadActors(Scene scene)
         {
-            Tank tank1 = _actorFactory.CreatePaddle();
-            Tank tank2 = _actorFactory.CreatePaddle();
-            Ball ball = _actorFactory.CreateBall(200,200);
+            Tank tank1 = _actorFactory.CreateTank("tank1X", "tank1Y", "tank1Image");
+            Tank tank2 = _actorFactory.CreateTank("tank2X", "tank2Y", "tank2Image");
+            Ball ball1 = _actorFactory.CreateBall(tank1);
+            Ball ball2 = _actorFactory.CreateBall(tank2);
             Actor field = _actorFactory.CreateField();
             Level level = _actorFactory.CreateLevel();
             Score score = _actorFactory.CreateScore();
+
+                int x = 0;
+                int y = 0;
+
+            for(int i = 0; i < 4; i++){
+                x = wallx[i];
+                y = wally[i];
+            Image wall = _actorFactory.CreateWall(x,y);
+             }
      //       Lives lives = _actorFactory.CreateLives();
 
-            tank.AttachBall(ball);
 
             scene.AddActor("tank1", tank1);
             scene.AddActor("tank2", tank2);
-            scene.AddActor("balls", ball);
+            scene.AddActor("balls", ball1);
+            scene.AddActor("balls", ball2);
             // scene.AddActor("paddle", paddle);
             scene.AddActor("field", field);
             scene.AddActor("level", level);
@@ -76,7 +90,7 @@ namespace Example.Breaker.Game
             IVideoService videoService = serviceFactory.GetVideoService();
             videoService.SetBackground(Color.Black());
         }
-
+     
     }
 }
 

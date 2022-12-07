@@ -16,7 +16,7 @@ namespace Example.Breaker.Game
             _settingsService = settingsService;
         }
 
-        public Ball CreateBall(float x, float y)
+        public Ball CreateBall(Tank tank)
         {
             
             string image = _settingsService.GetString("ballImage");
@@ -30,10 +30,10 @@ namespace Example.Breaker.Game
             Ball ball = new Ball();
             ball.Display(image);
             ball.SizeTo(width, height);
-            ball.MoveTo(x,y);
             ball.Steer(directionX, directionY);
-
+            tank.AttachBall(ball);
             return ball;
+
         }
 
         public Actor CreateField()
@@ -70,22 +70,36 @@ namespace Example.Breaker.Game
         //     return lives;
         // }
 
-        public Tank CreatePaddle()
+        public Tank CreateTank(string xPos, string yPos, string tankImage)
         {
-            string[] images = _settingsService.GetArray<string>("paddleImages");
-            float durationInSeconds = _settingsService.GetFloat("paddleAnimationLength");
+            string images = _settingsService.GetString(tankImage);
+            float durationInSeconds = _settingsService.GetFloat("tankAnimationLength");
             int framesPerSecond = _settingsService.GetInt("frameRate");
-            float width = _settingsService.GetFloat("paddleWidth");
-            float height = _settingsService.GetFloat("paddleHeight");
-            float x = _settingsService.GetFloat("paddleX");
-            float y = _settingsService.GetFloat("paddleY");
+            float width = _settingsService.GetFloat("tankWidth");
+            float height = _settingsService.GetFloat("tankHeight");
+            float x = _settingsService.GetFloat(xPos);
+            float y = _settingsService.GetFloat(yPos);
             
             Tank tank = new Tank();
-            tank.Animate(images, durationInSeconds, framesPerSecond);
+     //       tank.Animate(images, durationInSeconds, framesPerSecond);
             tank.SizeTo(width, height);
             tank.MoveTo(x, y);
 
             return tank;
+        }
+                public Image CreateWall(int x,int y)
+        {
+            
+            float width = _settingsService.GetFloat("wallWidth");
+            float height = _settingsService.GetFloat("wallHeight");
+            string image = _settingsService.GetString("wallImage");
+            
+            Image wall = new Image();
+            wall.Display(image);
+            wall.SizeTo(width, height);
+            wall.MoveTo(x,y);
+
+            return wall;
         }
 
         public Score CreateScore()

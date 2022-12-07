@@ -23,7 +23,7 @@ namespace Example.Breaker.Game
                 
                 _videoService.ClearBuffer();
                 DrawBalls(scene);
-                DrawPaddles(scene);
+                DrawTank(scene);
                 DrawLevel(scene);
                 DrawScore(scene);
     //            DrawLives(scene);
@@ -44,7 +44,7 @@ namespace Example.Breaker.Game
             }
         }
 
-        private void DrawPaddles(Scene scene)
+        private void DrawTank(Scene scene)
         {
             Tank tank1 = scene.GetFirstActor<Tank>("tank1");
             _videoService.Draw(tank1);

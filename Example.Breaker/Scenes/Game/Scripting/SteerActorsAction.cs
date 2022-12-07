@@ -10,7 +10,6 @@ namespace Example.Breaker.Game
     {
         private IKeyboardService _keyboardService;
         private ISettingsService _settingsService;
-        private bool releasedSpacebar = false;
 
         public SteerActorsAction(IServiceFactory serviceFactory)
         {
@@ -23,48 +22,58 @@ namespace Example.Breaker.Game
             try
             {
                 ReleaseBall(scene);
-                SteerTank(scene);
+                SteerTanks(scene);
             }
             catch (Exception exception)
             {
-                callback.OnError("Couldn't steer paddle.", exception);
+                callback.OnError("Couldn't steer tank.", exception);
             }
         }
 
         private void ReleaseBall(Scene scene)
         {
-           
-        if (!_keyboardService.IsKeyDown(KeyboardKey.Space)){
-        releasedSpacebar = true;
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
+            TankReleaseBall(tank1, KeyboardKey.Space);
+            TankReleaseBall(tank2, KeyboardKey.Enter);
         }
-            Tank tank = scene.GetFirstActor<Tank>("tank");
-            if (tank.HasBall() && _keyboardService.IsKeyDown(KeyboardKey.Space) && releasedSpacebar)
+
+        private void TankReleaseBall(Tank tank, KeyboardKey Fire)
+        {
+            if (!_keyboardService.IsKeyDown(Fire)){
+            tank.SetFireKeyStatus(true);
+            }
+            if (tank.HasBall() && _keyboardService.IsKeyDown(Fire) && tank.IsFireKeyReleased())
             {
                 tank.ReleaseBall();
-                releasedSpacebar = false;
+                tank.SetFireKeyStatus(false);
             }
         }
+        
 
-
-
-        private void SteerTank(Scene scene)
+        private void SteerTanks(Scene scene)
         {
             float directionX = 0;
             float directionY = 0;
-            Tank tank = scene.GetFirstActor<Tank>("tank");
-            
-            if (_keyboardService.IsKeyDown(KeyboardKey.W))
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
+            SteerTank(tank1, KeyboardKey.W, KeyboardKey.A, KeyboardKey.D, KeyboardKey.S, directionX, directionY);
+            SteerTank(tank2, KeyboardKey.I, KeyboardKey.J, KeyboardKey.L, KeyboardKey.K, directionX, directionY);
+
+        }
+        
+        private void SteerTank(Tank tank, KeyboardKey Up, KeyboardKey Left, KeyboardKey Right, KeyboardKey Down, float directionX, float directionY) 
+        {
+            if (_keyboardService.IsKeyDown(Up))
             {
-      //          directionY = _settingsService.GetFloat("paddleVelocity") * -1;
-                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity") * -1;
-                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity");
+                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("tankVelocity") * -1;
+                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("tankVelocity");
                 
             }
-            else if (_keyboardService.IsKeyDown(KeyboardKey.S))
+            else if (_keyboardService.IsKeyDown(Down))
             {
-         //       directionY = _settingsService.GetFloat("paddleVelocity");
-                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity");
-                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("paddleVelocity")*-1;
+                directionY = Convert.ToSingle(Math.Cos( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("tankVelocity");
+                directionX = Convert.ToSingle(Math.Sin( (tank.GetRotation() * Math.PI) / 180)) * _settingsService.GetFloat("tankVelocity")*-1;
          
          
             }
@@ -76,11 +85,11 @@ namespace Example.Breaker.Game
 
             tank.SteerBall(directionX, directionY);
 
-             if (_keyboardService.IsKeyDown(KeyboardKey.A))
+            if (_keyboardService.IsKeyDown(Left))
                 {
                     tank.Rotate(-4);
                 }
-                else if (_keyboardService.IsKeyDown(KeyboardKey.D))
+                else if (_keyboardService.IsKeyDown(Right))
                 {
                     tank.Rotate(4);
                 }

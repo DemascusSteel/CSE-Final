@@ -22,8 +22,8 @@ namespace Example.Breaker.Game
         {
             try
             {
-         //       DoBallPaddleCollision(scene);
-              //  DoBallBottomCollision(scene);
+                DoTankCollisions(scene);
+                DoBallWallCollision(scene);
             }
             catch (Exception exception)
             {
@@ -31,83 +31,74 @@ namespace Example.Breaker.Game
             }
         }
 
-        // private void DoBallBottomCollision(Scene scene)
-        // {
-        //     Tank tank = scene.GetFirstActor<Tank>("tank");
-        //     List<Ball> balls = scene.GetAllActors<Ball>("balls");
-        //     Actor field = scene.GetFirstActor("field");
-        //     Lives lives = scene.GetFirstActor<Lives>("lives");
+        private void DoTankCollisions(Scene scene)
+        {
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
+            DoBallTankCollision(scene, tank1, "tank1");
+            DoTankWallCollision(scene, tank1);
+            DoBallTankCollision(scene, tank2, "tank2");
+            DoTankWallCollision(scene, tank2);
+        }
 
-        //     foreach (Ball ball in balls)
-        //     {
-        //         if (ball.GetBottom() >= field.GetBottom())
-        //         {
-        //             if (balls.Count == 1)
-        //             {
-        //                 tank.AttachBall(ball);
-        //                 string sound = _settingsService.GetString("startSound");
-        //                 _audioService.PlaySound(sound);
-        //                 lives.RemoveLife();
-        //             }
-        //             else
-        //             {
-        //                 scene.RemoveActor("balls", ball);
-        //             }
-        //         }
-        //     }
-        // }
+        private void DoBallTankCollision(Scene scene, Tank tank, string group)
+        {
+            List<Ball> balls = scene.GetAllActors<Ball>("balls");
 
-        // private void DoBallPaddleCollision(Scene scene)
-        // {
-        //     Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-        //     List<Ball> balls = scene.GetAllActors<Ball>("balls");
+            foreach(Ball ball in balls)
+            {
+
+                if (ball.Overlaps(tank) && ball != tank.GetBall())
+                {
+                    scene.RemoveActor(group, tank);
+                }
+            }
             
-        //     foreach(Ball ball in balls)
-        //     {
-        //         if (ball.Overlaps(Xpaddle))
-        //         {
-        //             ball.BounceY();
-        //             string sound = _settingsService.GetString("bounceSound");
-        //             _audioService.PlaySound(sound);
-        //         }
-        //         if (ball.Overlaps(Ypaddle))
-        //         {
-        //             ball.BounceX();
-        //             string sound = _settingsService.GetString("bounceSound");
-        //             _audioService.PlaySound(sound);
-        //         }
+        }
 
-        //     }
-        // }
-
-        // private void DoSpecialPaddleCollision(Scene scene)
-        // {
-        //     Paddle paddle = scene.GetFirstActor<Paddle>("paddle");
-        //     List<Special> specials = scene.GetAllActors<Special>("specials");
+        private void DoBallWallCollision(Scene scene)
+        {
+            List<Actor> walls = scene.GetAllActors<Actor>("walls");
+            List<Ball> balls = scene.GetAllActors<Ball>("balls");
             
-        //     foreach(Special special in specials)
-        //     {
-        //         if (paddle.Overlaps(special))
-        //         {
-        //             Action effect = special.GetEffect();
-        //             effect.Execute(scene, 0f, null);
-        //             scene.RemoveActor("specials", special);
-        //         }
-        //     }
-        // }
+            foreach(Ball ball in balls)
+            {
+                foreach(Actor wall in walls)
+            {
+                if (ball.Overlaps(wall))
+                {
+                    ball.BounceY();
+                    string sound = _settingsService.GetString("bounceSound");
+                    _audioService.PlaySound(sound);
+                }
+                if (ball.Overlaps(wall))
+                {
+                    ball.BounceX();
+                    string sound = _settingsService.GetString("bounceSound");
+                    _audioService.PlaySound(sound);
+                }
 
-        // private void DoSpecialBottomCollision(Scene scene)
-        // {
-        //     Actor field = scene.GetFirstActor("field");
-        //     List<Special> specials = scene.GetAllActors<Special>("specials");
-        //     foreach(Special special in specials)
-        //     {
-        //         if (special.GetBottom() >= field.GetBottom())
-        //         {
-        //             scene.RemoveActor("specials", special);
-        //         }
-        //     }
-        // }
+            }
+            }
+        }
+
+        private void DoTankWallCollision(Scene scene, Tank tank)
+        {
+            List<Image> walls = scene.GetAllActors<Image>("walls");
+            
+            foreach(Image wall in walls)
+            {
+                if (tank.Overlaps(wall))
+                {
+                    tank.Steer(-tank.GetVelocity());
+                }
+                if (tank.Overlaps(wall))
+                {
+                    tank.Steer(-tank.GetVelocity());
+                }
+
+            }
+        }
 
         
     }

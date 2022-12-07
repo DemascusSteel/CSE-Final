@@ -25,17 +25,16 @@
   "ballX": 484,
   "ballY": 672,
   "ballVelocity": 10,
-  "paddleImages": [
-    "Assets/Images/100.png",
-    "Assets/Images/101.png",
-    "Assets/Images/102.png"
-  ],
-  "paddleWidth": 106,
-  "paddleHeight": 28,
-  "paddleX": 459,
-  "paddleY": 700,
-  "paddleAnimationLength": 0.4,
-  "paddleVelocity": 5,
+  "tank1Image": "Assets/Images/101.png",
+  "tank2Image": "Assets/Images/101.png",
+  "tankWidth": 50,
+  "tankHeight": 50,
+  "tank1X": 229,
+  "tank1Y": 400,
+  "tank2X": 688,
+  "tank2Y": 400,
+  "tankAnimationLength": 0.4,
+  "tankVelocity": 5,
   "fieldWidth": 1024,
   "fieldHeight": 708,
   "fieldX": 0,
@@ -44,5 +43,8 @@
   "startSound": "Assets/Sounds/start.wav",
   "overSound": "Assets/Sounds/over.wav",
   "menuMusic": "Assets/Sounds/ludum-dare-2.wav",
-  "startingLives": 3
+  "startingLives": 3,
+  "wallWidth": 50,
+  "wallHeight": 200,
+  "wallImage": "Assets/Images/wall.png"
 }

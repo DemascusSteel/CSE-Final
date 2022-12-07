@@ -8,6 +8,8 @@ namespace Example.Breaker.Game
     public class Tank : Byui.Games.Casting.Image
     {
         private Ball _ball;
+
+        private bool releasedFireKey;
         
         public Tank() { }
 
@@ -46,6 +48,16 @@ namespace Example.Breaker.Game
         public void ReleaseBall()
         {            
             _ball = null;
+        }
+
+        public bool IsFireKeyReleased()
+        {
+            return releasedFireKey;
+        }
+
+        public void SetFireKeyStatus(bool status)
+        {
+            releasedFireKey = status;
         }
     }
 }
