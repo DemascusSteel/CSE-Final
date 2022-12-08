@@ -50,7 +50,8 @@ namespace Example.Breaker.Game
 
                 if (ball.Overlaps(tank) && ball != tank.GetBall())
                 {
-                    scene.RemoveActor(group, tank);
+                    // scene.RemoveActor(group, tank);
+                    tank.Tint(Green);
                 }
             }
             
