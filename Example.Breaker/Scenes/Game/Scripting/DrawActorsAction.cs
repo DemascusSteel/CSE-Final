@@ -24,8 +24,8 @@ namespace Example.Breaker.Game
                 _videoService.ClearBuffer();
                 DrawBalls(scene);
                 DrawTank(scene);
-                DrawLevel(scene);
-                DrawScore(scene);
+             //   DrawLevel(scene);
+             //   DrawScore(scene);
     //            DrawLives(scene);
                 _videoService.FlushBuffer();
             }
@@ -38,10 +38,18 @@ namespace Example.Breaker.Game
         private void DrawBalls(Scene scene)
         {
             List<Ball> balls = scene.GetAllActors<Ball>("balls");
+
+             Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
+
             foreach (Ball ball in balls)
-            {
-                _videoService.Draw(ball);
-            }
+                {
+                if ((ball != tank1.GetBall()) && ( ball != tank2.GetBall()))
+                    {
+                        _videoService.Draw(ball);
+                    }
+                }
         }
 
         private void DrawTank(Scene scene)
@@ -65,10 +73,10 @@ namespace Example.Breaker.Game
         //     _videoService.Draw(lives);
         // }
 
-        private void DrawScore(Scene scene)
-        {
-            Score score = scene.GetFirstActor<Score>("score");
-            _videoService.Draw(score);
-        }
+        // private void DrawScore(Scene scene)
+        // {
+        //     Score score = scene.GetFirstActor<Score>("score");
+        //     _videoService.Draw(score);
+        // }
     }
 }

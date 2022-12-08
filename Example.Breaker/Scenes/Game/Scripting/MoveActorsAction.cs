@@ -65,6 +65,7 @@ namespace Example.Breaker.Game
             tank1.ClampTo(field);
             tank2.Move();
             tank2.ClampTo(field);
+
         }
     }
 }

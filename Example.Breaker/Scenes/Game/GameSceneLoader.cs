@@ -58,8 +58,8 @@ namespace Example.Breaker.Game
             Ball ball1 = _actorFactory.CreateBall(tank1);
             Ball ball2 = _actorFactory.CreateBall(tank2);
             Actor field = _actorFactory.CreateField();
-            Level level = _actorFactory.CreateLevel();
-            Score score = _actorFactory.CreateScore();
+            // Level level = _actorFactory.CreateLevel();
+            // Score score = _actorFactory.CreateScore();
 
                 int x = 0;
                 int y = 0;
@@ -68,6 +68,7 @@ namespace Example.Breaker.Game
                 x = wallx[i];
                 y = wally[i];
             Image wall = _actorFactory.CreateWall(x,y);
+            scene.AddActor("walls", wall);
              }
      //       Lives lives = _actorFactory.CreateLives();
 
@@ -78,8 +79,8 @@ namespace Example.Breaker.Game
             scene.AddActor("balls", ball2);
             // scene.AddActor("paddle", paddle);
             scene.AddActor("field", field);
-            scene.AddActor("level", level);
-            scene.AddActor("score", score);
+       //     scene.AddActor("level", level);
+       //     scene.AddActor("score", score);
     //        scene.AddActor("lives", lives);
         }
 
