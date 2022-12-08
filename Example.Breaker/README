@@ -14,9 +14,9 @@ Also this is incomplete, I don't know what we're using yet, so I put everything 
     * Ball
     * Level
     * Lives
-    * Paddle
     * Score
     * Tank
+    -------
     * Color
     * Image
     * Label
@@ -27,6 +27,7 @@ Also this is incomplete, I don't know what we're using yet, so I put everything 
     * Phase
     * Scene
     * Script
+    --------
     * ApplyExtraLife
     * ApplyMultiball
     * CollideActorsActions
@@ -67,5 +68,4 @@ Make sure you have dotnet 6.0 or newer installed on your machine. Open a termina
 
 
 Bugs that could be a feature:
-hold down spacebar to keep firing?
-landmines? let bullet velocity = tank velocity
+invisible walls

@@ -28,7 +28,7 @@ namespace Example.Breaker.Game
             if (_ball != null)
             {
                 float x = this.GetCenterX() + Convert.ToSingle(Math.Cos( (this.GetRotation() * Math.PI) / 180))*100;
-                float y = this.GetCenterY() + Convert.ToSingle(Math.Cos( (this.GetRotation() * Math.PI) / 180))*100;
+                float y = this.GetCenterY() + Convert.ToSingle(Math.Sin( (this.GetRotation() * Math.PI) / 180))*100;
                 _ball.MoveTo(x, y);
             }
         }
