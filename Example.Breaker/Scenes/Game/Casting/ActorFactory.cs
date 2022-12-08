@@ -102,17 +102,17 @@ namespace Example.Breaker.Game
             return wall;
         }
 
-        public Score CreateScore()
-        {
-            int x = (int) _settingsService.GetFloat("screenWidth") / 2;
-            int startingLives = _settingsService.GetInt("startingLives");
+        // public Score CreateScore()
+        // {
+        //     int x = (int) _settingsService.GetFloat("screenWidth") / 2;
+        //     int startingLives = _settingsService.GetInt("startingLives");
             
-            Score score = new Score();
-            score.MoveTo(x, 0);
-            score.Align(Label.Center);
+        //     Score score = new Score();
+        //     score.MoveTo(x, 0);
+        //     score.Align(Label.Center);
 
-            return score;
-        }
+        //     return score;
+        // }
         
     }
 }
