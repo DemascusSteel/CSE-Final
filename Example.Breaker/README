@@ -1,6 +1,6 @@
-# Not Wii Tanks or Atari Combat
+# Firefight
 Update this! 
-Tanks is played according to the following rules:
+Firefight is played according to the following rules:
 - Players can move up, down, left, and right using A and D
 - Players can aim shots using W and S
 - Two players will have to navigate the screen and try to destroy the other tank while avoiding the flying bullets
@@ -9,48 +9,49 @@ Tanks is played according to the following rules:
 
 # Project Structure
 Also this is incomplete, I don't know what we're using yet, so I put everything on there
-* Casting
-    * ActorFactory
-    * Ball
-    * Level
-    * Lives
-    * Score
-    * Tank
-    -------
-    * Color
-    * Image
-    * Label
-    * Validator
-* Scripting
-    * Action
-    * IActionCallback
-    * Phase
-    * Scene
-    * Script
-    --------
-    * ApplyExtraLife
-    * ApplyMultiball
-    * CollideActorsActions
-    * DrawActorsActions
-    * LoadSceneActions
-    * MoveActorsActions
-    * SteerActorsActions
-* Directing
-    * Director
-* Services
-    * IAudioService
-    * IKeyboardService
-    * IServiceFactory
-    * ISettingsService
-    * IVideoService
-    * JsonSettingsService
-    * KeyboardKey
-    * MouseButton
-    * RaylibAudioService
-    * RaylibKeyboardService
-    * RaylibMouseService
-    * RaylibServiceFactory
-    * RaylibVideoService
+* Game
+    * Casting
+        * ActorFactory
+        * Ball
+        * Level
+        * Lives
+        * Score
+        * Tank
+        -------
+        * Color
+        * Image
+        * Label
+        * Validator
+    * Scripting
+        * Action
+        * IActionCallback
+        * Phase
+        * Scene
+        * Script
+        --------
+        * ApplyExtraLife
+        * ApplyMultiball
+        * CollideActorsActions
+        * DrawActorsActions
+        * LoadSceneActions
+        * MoveActorsActions
+        * SteerActorsActions
+    * Directing
+        * Director
+    * Services
+        * IAudioService
+        * IKeyboardService
+        * IServiceFactory
+        * ISettingsService
+        * IVideoService
+        * JsonSettingsService
+        * KeyboardKey
+        * MouseButton
+        * RaylibAudioService
+        * RaylibKeyboardService
+        * RaylibMouseService
+        * RaylibServiceFactory
+        * RaylibVideoService
 
 # Getting Started
 Make sure you have dotnet 6.0 or newer installed on your machine. Open a terminal and browse to the project's root folder. Start the program by running the following commands:
