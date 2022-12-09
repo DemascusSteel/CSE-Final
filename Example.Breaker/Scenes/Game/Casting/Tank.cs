@@ -8,6 +8,7 @@ namespace Example.Breaker.Game
     public class Tank : Byui.Games.Casting.Image
     {
         private Ball _ball;
+        private int Alive = 1;
 
         private bool releasedFireKey;
         
@@ -58,6 +59,13 @@ namespace Example.Breaker.Game
         public void SetFireKeyStatus(bool status)
         {
             releasedFireKey = status;
+        }
+         public void KillTank()
+        {
+            Alive = 0;
+        }
+        public int IsAlive(){
+            return Alive;
         }
     }
 }
