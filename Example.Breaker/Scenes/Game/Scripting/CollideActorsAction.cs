@@ -51,6 +51,7 @@ namespace Example.Breaker.Game
                 {
                     // scene.RemoveActor(group, tank);
                     tank.Tint(Color.Green());
+                    tank.KillTank();
                 }
             }
             

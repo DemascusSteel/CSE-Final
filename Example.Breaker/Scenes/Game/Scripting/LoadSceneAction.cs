@@ -30,8 +30,17 @@ namespace Example.Breaker.Game
             //     }
             
             // code to turn "tank" into 1 if either tank died on the game
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
 
-            if (tank < 2)
+            if (tank1.IsAlive() == 0){
+                tank--;
+            }
+            if (tank1.IsAlive() == 0){
+                tank--;
+            }
+
+            if (tank < 2);
                 {
                     _menuSceneLoader.Load(scene);
                 }
