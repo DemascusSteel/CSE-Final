@@ -4,7 +4,6 @@ using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
 
-
 namespace Example.Breaker.Game
 {
     public class CollideActorsAction : Byui.Games.Scripting.Action

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
-using Example.Breaker.Over;
+using Example.Breaker.Menu;
 using Example.Breaker.Shared;
 
 
@@ -11,11 +11,12 @@ namespace Example.Breaker.Game
 {
     public class LoadSceneAction : Byui.Games.Scripting.Action
     {
-        private SceneLoader _overSceneLoader;
+        private SceneLoader _menuSceneLoader;
+        private int tank = 1000;
 
         public LoadSceneAction(IServiceFactory serviceFactory)
         {
-            _overSceneLoader = new OverSceneLoader(serviceFactory);
+            _menuSceneLoader = new MenuSceneLoader(serviceFactory);
         }
 
         public override void Execute(Scene scene, float deltaTime, IActionCallback callback)
@@ -25,15 +26,18 @@ namespace Example.Breaker.Game
             //    Lives status = scene.GetFirstActor<Lives>("lives");
             //     if (status.IsDead())
             //     {
-            //         _overSceneLoader.Load(scene);
+            //         _menuSceneLoader.Load(scene);
             //     }
-            int tank = 2;
+            
             // code to turn "tank" into 1 if either tank died on the game
 
-            if (tank <2)
+            if (tank < 1)
                 {
-                    _overSceneLoader.Load(scene);
+                    _menuSceneLoader.Load(scene);
                 }
+            else{
+                tank --;
+            }
             }
             catch (Exception exception)
             {

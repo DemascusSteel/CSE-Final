@@ -46,9 +46,9 @@ namespace Example.Breaker.Game
             scene.AddAction(Phase.Input, steerActorsAction);
             scene.AddAction(Phase.Update, moveActorsAction);
             scene.AddAction(Phase.Update, collideActorsAction);
+            scene.AddAction(Phase.Update, applyMultiballAction);
             scene.AddAction(Phase.Update, loadSceneAction);
             scene.AddAction(Phase.Output, drawActorsAction);
-            scene.AddAction(Phase.Update, applyMultiballAction);
         }
 
         private void LoadActors(Scene scene)
