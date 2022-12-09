@@ -12,7 +12,7 @@ namespace Example.Breaker.Game
     public class LoadSceneAction : Byui.Games.Scripting.Action
     {
         private SceneLoader _menuSceneLoader;
-        private int tank = 1000;
+        private int tank = 2;
 
         public LoadSceneAction(IServiceFactory serviceFactory)
         {
@@ -31,13 +31,10 @@ namespace Example.Breaker.Game
             
             // code to turn "tank" into 1 if either tank died on the game
 
-            if (tank < 1)
+            if (tank < 2)
                 {
                     _menuSceneLoader.Load(scene);
                 }
-            else{
-                tank --;
-            }
             }
             catch (Exception exception)
             {
