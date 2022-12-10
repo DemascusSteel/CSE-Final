@@ -62,33 +62,39 @@ namespace Example.Breaker.Game
         {
             List<Actor> walls = scene.GetAllActors<Actor>("walls");
             List<Ball> balls = scene.GetAllActors<Ball>("balls");
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+            Tank tank2 = scene.GetFirstActor<Tank>("tank2");
+
             
             foreach(Ball ball in balls)
             {
-                foreach(Actor wall in walls)
-            {
-                if (ball.OverlapsTop(wall) || ball.OverlapsBottom(wall) && !ball.OverlapsLeft(wall) && !ball.OverlapsRight(wall))
+                if ((ball != tank1.GetBall()) && ( ball != tank2.GetBall()))
                 {
-                    ball.BounceY();
-                    string sound = _settingsService.GetString("bounceSound");
-                    ball.RemoveLife();
-                  // _audioService.PlaySound(sound);
-                }
-                if (ball.OverlapsRight(wall) || ball.OverlapsLeft(wall) && !ball.OverlapsTop(wall) && !ball.OverlapsBottom(wall))
-                {
-                    ball.BounceX();
-                    string sound = _settingsService.GetString("bounceSound");
-                    ball.RemoveLife();
-                  //  _audioService.PlaySound(sound);
-                }
-                else if (ball.Overlaps(wall))
-                {
-                    ball.BounceCorner();
-                    string sound = _settingsService.GetString("bounceSound");
-                    ball.RemoveLife();
-                }
+                        foreach(Actor wall in walls)
+                    {
+                        if (ball.OverlapsTop(wall) || ball.OverlapsBottom(wall) && !ball.OverlapsLeft(wall) && !ball.OverlapsRight(wall))
+                        {
+                            ball.BounceY();
+                            string sound = _settingsService.GetString("bounceSound");
+                            ball.RemoveLife();
+                        // _audioService.PlaySound(sound);
+                        }
+                        if (ball.OverlapsRight(wall) || ball.OverlapsLeft(wall) && !ball.OverlapsTop(wall) && !ball.OverlapsBottom(wall))
+                        {
+                            ball.BounceX();
+                            string sound = _settingsService.GetString("bounceSound");
+                            ball.RemoveLife();
+                        //  _audioService.PlaySound(sound);
+                        }
+                        else if (ball.Overlaps(wall))
+                        {
+                            ball.BounceCorner();
+                            string sound = _settingsService.GetString("bounceSound");
+                            ball.RemoveLife();
+                        }
 
-            }
+                    }
+                }
             }
         }
 

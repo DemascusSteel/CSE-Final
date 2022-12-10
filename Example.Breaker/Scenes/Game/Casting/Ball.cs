@@ -10,7 +10,7 @@ namespace Example.Breaker.Game
     {
         public Ball() { }
 
-        private int _lives = 3;
+        private int _lives = 5;
 
         public bool IsDead()
         {

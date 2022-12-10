@@ -22,7 +22,7 @@ namespace Example.Breaker.Over
         {
             try
             {
-                if (_keyboardService.IsKeyPressed(KeyboardKey.Enter))
+                if (_keyboardService.IsKeyPressed(KeyboardKey.M))
                 {
                     _menuSceneLoader.Load(scene);
                 }

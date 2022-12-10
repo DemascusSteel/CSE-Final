@@ -33,19 +33,19 @@ namespace Example.Breaker.Over
 
             if(tank1.IsAlive() == 0)
             {
-                winner.Display("Tank 2 Wins");
+                winner.Display("Red Tank Wins");
             }
              else
             {
-                winner.Display("Tank 1 Wins");
+                winner.Display("Green Tank Wins");
             }
             
-            winner.MoveTo(1024/2, 768/3+100);
+            winner.MoveTo(1024/2, 768/3+400);
             winner.Align(Label.Center);
 
             Label instructions = new Label();
-            instructions.Display("press 'enter' to return to the menu");
-            instructions.MoveTo(1024/2, 768/3+200);
+            instructions.Display("press 'M' to return to the menu");
+            instructions.MoveTo(1024/2, 768/3+300);
             instructions.Align(Label.Center);
 
             Image explosion = new Image();

@@ -60,7 +60,6 @@ namespace Example.Breaker.Game
             Tank tank2 = scene.GetFirstActor<Tank>("tank2");
             _videoService.Draw(tank2);
         }
-
         private void DrawWall(Scene scene)
         {
             List<Actor> walls = scene.GetAllActors("walls");
