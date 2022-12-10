@@ -71,18 +71,21 @@ namespace Example.Breaker.Game
                 {
                     ball.BounceY();
                     string sound = _settingsService.GetString("bounceSound");
+                    ball.RemoveLife();
                   // _audioService.PlaySound(sound);
                 }
                 if (ball.OverlapsRight(wall) || ball.OverlapsLeft(wall) && !ball.OverlapsTop(wall) && !ball.OverlapsBottom(wall))
                 {
                     ball.BounceX();
                     string sound = _settingsService.GetString("bounceSound");
+                    ball.RemoveLife();
                   //  _audioService.PlaySound(sound);
                 }
                 else if (ball.Overlaps(wall))
                 {
                     ball.BounceCorner();
                     string sound = _settingsService.GetString("bounceSound");
+                    ball.RemoveLife();
                 }
 
             }

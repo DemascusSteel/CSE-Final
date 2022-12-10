@@ -13,7 +13,7 @@ namespace Example.Breaker.Game
 
         private ActorFactory _actorFactory;
         private List<int> wallx = new List<int> {200,200,500,800,800};
-        private List<int> wally = new List<int> {250, 600, 800, 0, 400};
+        private List<int> wally = new List<int> {0,400, 300, 0, 400};
 
        
 
