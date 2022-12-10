@@ -12,7 +12,7 @@ namespace Example.Breaker.Game
     public class LoadSceneAction : Byui.Games.Scripting.Action
     {
         private SceneLoader _menuSceneLoader;
-        private int tank = 2;
+        private int tank = 10000;
 
         public LoadSceneAction(IServiceFactory serviceFactory)
         {
@@ -40,10 +40,13 @@ namespace Example.Breaker.Game
                 tank--;
             }
 
-            if (tank < 2);
+            if (tank < 2)
                 {
                     _menuSceneLoader.Load(scene);
                 }
+            else{
+                tank--;
+            }
             }
             catch (Exception exception)
             {
