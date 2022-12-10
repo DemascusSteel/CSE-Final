@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
@@ -66,17 +67,22 @@ namespace Example.Breaker.Game
             {
                 foreach(Actor wall in walls)
             {
-                if (ball.Overlaps(wall.GetTop()) || ball.Overlaps(wall.GetBottom()))
+                if (ball.OverlapsTop(wall) || ball.OverlapsBottom(wall) && !ball.OverlapsLeft(wall) && !ball.OverlapsRight(wall))
                 {
                     ball.BounceY();
                     string sound = _settingsService.GetString("bounceSound");
                   // _audioService.PlaySound(sound);
                 }
-                if (ball.Overlaps(wall.GetLeft()) || ball.Overlaps(wall.GetRight()))
+                if (ball.OverlapsRight(wall) || ball.OverlapsLeft(wall) && !ball.OverlapsTop(wall) && !ball.OverlapsBottom(wall))
                 {
                     ball.BounceX();
                     string sound = _settingsService.GetString("bounceSound");
                   //  _audioService.PlaySound(sound);
+                }
+                else if (ball.Overlaps(wall))
+                {
+                    ball.BounceCorner();
+                    string sound = _settingsService.GetString("bounceSound");
                 }
 
             }
