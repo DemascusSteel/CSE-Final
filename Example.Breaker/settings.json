@@ -1,10 +1,10 @@
 {
   "frameRate": 60,
-  "screenCaption": "CSE210 Breaker Example",
+  "screenCaption": "CSE210 FireFight",
   "screenWidth": 1024,
   "screenHeight": 768,
   "fontFile": "Assets/Fonts/zorque.otf",
-  "splashImage": "Assets/Images/splash.png",
+  "splashImage": "Assets/Images/firefightEdit.jpg",
   "splashWidth": 1024,
   "splashHeight": 768,
   "courseText": "CSE 210: PROGRAMMING WITH CLASSES",
@@ -46,5 +46,6 @@
   "startingLives": 3,
   "wallWidth": 50,
   "wallHeight": 200,
-  "wallImage": "Assets/Images/wall.png"
+  "wallImage": "Assets/Images/100.png",
+  "Overexplode": "Assets/Images/explosion-gif-transparent-8.png"
 }

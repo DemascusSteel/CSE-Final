@@ -66,17 +66,17 @@ namespace Example.Breaker.Game
             {
                 foreach(Actor wall in walls)
             {
-                if (ball.Overlaps(wall))
+                if (ball.Overlaps(wall.GetTop()) || ball.Overlaps(wall.GetBottom()))
                 {
                     ball.BounceY();
                     string sound = _settingsService.GetString("bounceSound");
-                    _audioService.PlaySound(sound);
+                  // _audioService.PlaySound(sound);
                 }
-                if (ball.Overlaps(wall))
+                if (ball.Overlaps(wall.GetLeft()) || ball.Overlaps(wall.GetRight()))
                 {
                     ball.BounceX();
                     string sound = _settingsService.GetString("bounceSound");
-                    _audioService.PlaySound(sound);
+                  //  _audioService.PlaySound(sound);
                 }
 
             }

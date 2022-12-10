@@ -21,7 +21,9 @@ namespace Example.Breaker.Over
             {
                Label title = scene.GetFirstActor<Label>("title");
                Label instructions = scene.GetFirstActor<Label>("instructions");
+               Actor Explosion = scene.GetFirstActor<Actor>("explosion");
 
+                _videoService.Draw(Explosion);
                 _videoService.ClearBuffer();
                 _videoService.Draw(title);
                 _videoService.Draw(instructions);
