@@ -20,12 +20,14 @@ namespace Example.Breaker.Over
             try
             {
                Label title = scene.GetFirstActor<Label>("title");
+               Label winner = scene.GetFirstActor<Label>("winner");
                Label instructions = scene.GetFirstActor<Label>("instructions");
-               Actor Explosion = scene.GetFirstActor<Actor>("explosion");
+               Image explosion = scene.GetFirstActor<Image>("explosion");
 
-                _videoService.Draw(Explosion);
+                _videoService.Draw(explosion);
                 _videoService.ClearBuffer();
                 _videoService.Draw(title);
+                _videoService.Draw(winner);
                 _videoService.Draw(instructions);
                 _videoService.FlushBuffer();
             }

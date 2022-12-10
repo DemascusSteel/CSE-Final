@@ -3,6 +3,7 @@ using Byui.Games.Casting;
 using Byui.Games.Scripting;
 using Byui.Games.Services;
 using Example.Breaker.Shared;
+using Example.Breaker.Game;
 
 
 namespace Example.Breaker.Over
@@ -21,20 +22,37 @@ namespace Example.Breaker.Over
 
             // Create the actors that participate in the scene.
             Label title = new Label();
-            title.Display("OVER SCENE");
-            title.MoveTo(320, 200);
+            title.Display("Game Over");
+            title.MoveTo(1024/2, 768/3);
             title.Align(Label.Center);
+
+            
+            Label winner = new Label();
+
+            Tank tank1 = scene.GetFirstActor<Tank>("tank1");
+
+            if(tank1.IsAlive() == 0)
+            {
+                winner.Display("Tank 2 Wins");
+            }
+             else
+            {
+                winner.Display("Tank 1 Wins");
+            }
+            
+            winner.MoveTo(1024/2, 768/3+100);
+            winner.Align(Label.Center);
 
             Label instructions = new Label();
             instructions.Display("press 'enter' to return to the menu");
-            instructions.MoveTo(320, 240);
+            instructions.MoveTo(1024/2, 768/3+200);
             instructions.Align(Label.Center);
 
             Image explosion = new Image();
             string image = settingsService.GetString("Overexplode");
             explosion.Display(image);
-            explosion.SizeTo(300, 300);
-            explosion.MoveTo(320, 240);
+            explosion.SizeTo(804,768);
+            explosion.MoveTo((1024-804)/2,0);
 
            
             // Instantiate the actions that use the actors.
@@ -45,6 +63,7 @@ namespace Example.Breaker.Over
             // Clear the given scene, add the actors and actions.
             scene.Clear();
             scene.AddActor("title", title);
+            scene.AddActor("winner", winner);
             scene.AddActor("instructions", instructions);
             scene.AddActor("explosion", explosion);
             scene.AddAction(Phase.Input, loadSceneAction);

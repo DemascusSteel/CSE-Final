@@ -12,7 +12,7 @@ namespace Example.Breaker.Game
     public class LoadSceneAction : Byui.Games.Scripting.Action
     {
         private SceneLoader _overSceneLoader;
-        private int tank = 2;
+        public int tank = 0;
 
         public LoadSceneAction(IServiceFactory serviceFactory)
         {
@@ -34,16 +34,13 @@ namespace Example.Breaker.Game
             Tank tank2 = scene.GetFirstActor<Tank>("tank2");
 
             if (tank1.IsAlive() == 0){
-                tank--;
-            }
-            if (tank2.IsAlive() == 0){
-                tank--;
-            }
-
-            if (tank < 2)
-                {
-                    _overSceneLoader.Load(scene);
+                tank = 2;
+                _overSceneLoader.Load(scene);
                 }
+            if (tank2.IsAlive() == 0){
+                tank = 1;
+                _overSceneLoader.Load(scene);
+            }
             }
             catch (Exception exception)
             {
