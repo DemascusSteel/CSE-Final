@@ -87,7 +87,8 @@ namespace Example.Breaker.Game
 
             return tank;
         }
-                public Image CreateWall(int x,int y)
+        
+        public Image CreateWall(int x,int y)
         {
             
             float width = _settingsService.GetFloat("wallWidth");

@@ -24,7 +24,7 @@ namespace Example.Breaker.Game
                 _videoService.ClearBuffer();
                 DrawBalls(scene);
                 DrawTank(scene);
-             //   DrawLevel(scene);
+                DrawWall(scene);
              //   DrawScore(scene);
     //            DrawLives(scene);
                 _videoService.FlushBuffer();
@@ -61,10 +61,14 @@ namespace Example.Breaker.Game
             _videoService.Draw(tank2);
         }
 
-        private void DrawLevel(Scene scene)
+        private void DrawWall(Scene scene)
         {
-            Level level = scene.GetFirstActor<Level>("level");
-            _videoService.Draw(level);
+            List<Actor> walls = scene.GetAllActors("walls");
+            foreach(Actor wall in walls)
+            {
+                _videoService.Draw(wall);
+            }
+            
         }
 
         // private void DrawLives(Scene scene)

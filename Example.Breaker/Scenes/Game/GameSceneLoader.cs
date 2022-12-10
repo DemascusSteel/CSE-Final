@@ -67,7 +67,7 @@ namespace Example.Breaker.Game
             for(int i = 0; i < 4; i++){
                 x = wallx[i];
                 y = wally[i];
-            Image wall = _actorFactory.CreateWall(x,y);
+            Image wall = _actorFactory.CreateWall(x, y);
             scene.AddActor("walls", wall);
              }
      //       Lives lives = _actorFactory.CreateLives();
