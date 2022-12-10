@@ -10,7 +10,7 @@ namespace Example.Breaker.Game
     {
         public Ball() { }
 
-        public int _lives = 3;
+        private int _lives = 3;
 
         public bool IsDead()
         {
@@ -52,25 +52,25 @@ namespace Example.Breaker.Game
         {
             return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop()
-                && this.GetBottom() < other.GetTop() + 20);
+                && this.GetBottom() < other.GetTop() + 5);
         }
         public virtual bool OverlapsBottom(Actor other)
         {
             return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop()
-                && this.GetTop() > other.GetBottom() - 20);
+                && this.GetTop() > other.GetBottom() - 5);
         }
         public virtual bool OverlapsLeft(Actor other)
         {
             return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop()
-                && this.GetRight() < other.GetLeft() + 20);
+                && this.GetRight() < other.GetLeft() + 5);
         }
         public virtual bool OverlapsRight(Actor other)
         {
             return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop()
-                && this.GetLeft() > other.GetRight() - 20);
+                && this.GetLeft() > other.GetRight() - 5);
         }
     }
 }
